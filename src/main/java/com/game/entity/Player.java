@@ -13,6 +13,7 @@ import java.util.Date;
 @Table(name = "player", schema = "rpg")
 public class Player {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
     @Column(name = "name", length = 12, nullable = false)
