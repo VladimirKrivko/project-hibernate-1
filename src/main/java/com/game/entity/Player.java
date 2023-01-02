@@ -4,7 +4,12 @@ import jakarta.persistence.*;
 
 import java.util.Date;
 
+
 @Entity
+@org.hibernate.annotations.NamedQuery(
+        name = "getAllCount",
+        query = "SELECT COUNT(p) FROM Player AS p"
+)
 @Table(name = "player", schema = "rpg")
 public class Player {
     @Id

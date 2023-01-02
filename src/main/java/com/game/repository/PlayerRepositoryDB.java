@@ -13,10 +13,6 @@ import javax.annotation.PreDestroy;
 import java.util.List;
 import java.util.Optional;
 
-@org.hibernate.annotations.NamedQuery(
-        name = "getAllCount",
-        query = "SELECT COUNT(*) FROM rpg.player"
-)
 @Repository(value = "db")
 public class PlayerRepositoryDB implements IPlayerRepository {
 
@@ -41,8 +37,8 @@ public class PlayerRepositoryDB implements IPlayerRepository {
     @Override
     public int getAllCount() {
         try (Session session = sessionFactory.openSession()) {
-            Query<Integer> query = session.createNamedQuery("getAllCount", Integer.class);
-            return query.getSingleResult();
+            Query<Long> query = session.createNamedQuery("getAllCount", Long.class);
+            return query.uniqueResult().intValue();
         }
     }
 
